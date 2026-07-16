@@ -1,0 +1,23 @@
+# --- Ambiente Virtual e Python ---
+venv/
+env/
+.env/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# --- Banco de Dados Local ---
+db.sqlite3
+db.sqlite3-journal
+
+# --- Configurações do VS Code / IDE ---
+.vscode/
+.idea/
+
+# --- Arquivos de Ambiente (Segurança) ---
+.env
+
+# --- Arquivos de log e cache ---
+*.log
+.DS_Store
