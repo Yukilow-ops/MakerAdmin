@@ -78,7 +78,7 @@ import os
 # Procure a variável DATABASE_URL que você configurou no Render/Local
 DATABASES = {
     'default': dj_database_url.config(
-        default=os.environ.get('DATABASE_URL'),
+        default=os.environ.get('postgresql://postgres:Yaguinuminha007@db.vmffepagpcbdqhkdqomm.supabase.co:5432/postgres'),
         conn_max_age=600
     )
 }
@@ -121,3 +121,11 @@ STATIC_URL = 'static/'
 
 LOGIN_REDIRECT_URL = 'home'  # Redireciona para a página inicial após o login
 LOGIN_URL = 'login'  # URL da página de login
+
+import os
+
+# Pasta onde o Django vai colocar os arquivos estáticos após o comando collectstatic
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# URL para acessar os arquivos estáticos
+STATIC_URL = 'static/'
