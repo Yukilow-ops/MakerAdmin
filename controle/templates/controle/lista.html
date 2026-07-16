@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Controle de Equipamentos</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background-color: #f4f4f9; }
+        h1 { color: #333; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; background: white; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: #007bff; color: white; }
+        .disponivel { color: green; font-weight: bold; }
+        .reservado { color: red; font-weight: bold; }
+        .manutencao { color: orange; font-weight: bold; }
+    </style>
+    <style>
+        .btn {
+            padding: 15px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.2s, transform 0.1s;
+        }
+        .btn-primary {
+            background-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Equipamentos da Sala</h1>
+    <p>Abaixo estão os aparelhos disponíveis para pedido e reserva:</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Nº de Série</th>
+                <th>Quantidade</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for equipamento in equipamentos %}
+            <tr>
+                <td>{{ equipamento.nome }}</td>
+                <td>{{ equipamento.numero_serie }}</td>
+                <td>{{ equipamento.quantidade }}</td>
+                <td>
+                    <span class="{{ equipamento.status }}">
+                        {{ equipamento.get_status_display }}
+                    </span>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4">Nenhum equipamento cadastrado ainda.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+    <div class="container">
+        <br>
+        <br>
+        <div class="btn-group">
+            <a href="{% url 'home' %}" class="btn btn-primary">↩️ Voltar para a Home </a>
+        </div>
+    </div>
+</body>
+</html>

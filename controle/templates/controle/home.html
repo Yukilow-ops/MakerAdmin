@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Reservas - Home</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 90%;
+        }
+        h1 { color: #333; margin-bottom: 10px; }
+        p { color: #666; margin-bottom: 30px; font-size: 1.1rem; }
+        .user-welcome {
+            background-color: #e2f0fe;
+            color: #0056b3;
+            padding: 10px;
+            border-radius: 6px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .btn-group { display: flex; flex-direction: column; gap: 15px; }
+        .btn {
+            padding: 15px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.2s, transform 0.1s;
+        }
+        .btn-primary { background-color: #007bff; }
+        .btn-primary:hover { background-color: #0056b3; transform: translateY(-2px); }
+        .btn-success { background-color: #28a745; }
+        .btn-success:hover { background-color: #218838; transform: translateY(-2px); }
+        .btn-secondary { background-color: #6c757d; }
+        .btn-secondary:hover { background-color: #5a6268; transform: translateY(-2px); }
+        .btn-danger { background-color: #dc3545; }
+        .btn-danger:hover { background-color: #bd2130; transform: translateY(-2px); }
+    </style>
+</head>
+<body>
+
+   <body>
+
+    <div class="container">
+        <h1>Sistema de Reservas</h1>
+        
+        <div class="user-welcome">
+            👋 Olá, {{ user.username }}! Você está conectado.
+        </div>
+        <p>O que você deseja fazer hoje?</p>
+        
+        <div class="btn-group">
+            <a href="{% url 'lista_equipamentos' %}" class="btn btn-primary">📋 Ver Equipamentos Disponíveis</a>
+            <a href="{% url 'fazer_reserva' %}" class="btn btn-success">📅 Solicitar Nova Reserva</a>
+
+            <form action="{% url 'logout' %}" method="post" style="display: inline; width: 100%;">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger" style="width: 100%; border: none; cursor: pointer;">
+                    🚪 Sair da Conta (Logout)
+                </button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
